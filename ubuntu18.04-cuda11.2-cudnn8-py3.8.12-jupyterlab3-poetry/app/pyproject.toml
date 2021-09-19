@@ -1,11 +1,13 @@
 [tool.poetry]
-name = "app"
+name = "notebooks"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+ipykernel = "^6.4.1"
+ipywidgets = "^7.6.5"
 
 [tool.poetry.dev-dependencies]
 
