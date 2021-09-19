@@ -5,10 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+      - ./app:/app
       - ./notebooks:/notebooks
     ports:
       - 8888:8888
-      - 6066:6006
+      - 6006:6006
     runtime: nvidia
     restart: always
     tty: true
