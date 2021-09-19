@@ -1,4 +1,6 @@
-FROM nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu18.04
+FROM nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04
+
+WORKDIR "/tmp"
 
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -19,19 +21,16 @@ RUN apt install -y \
     libssl-dev \
     liblzma-dev \
     curl
-RUN apt clean
 
 #--------------------------
 # python3.8.12
 #--------------------------
-WORKDIR "/tmp"
 RUN wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tar.xz 2>/dev/null 1>/dev/null
 RUN tar xJf Python-3.8.12.tar.xz && \
     cd Python-3.8.12 && \
     ./configure && \
     make && \
-    make install && \
-    rm -rf /tmp/*
+    make install
 RUN apt purge -y python3 python
 RUN python3 -m pip install --upgrade pip
 RUN cd /usr/local/bin && \
@@ -59,6 +58,10 @@ RUN pip install git+https://github.com/cliffwoolley/jupyter_tensorboard.git
 
 # Set up our notebook config.
 COPY jupyter_lab_config.py /root/.jupyter/jupyter_lab_config.py
+
+RUN rm -rf /tmp/*
+RUN apt clean
+RUN apt autoremove -y
 
 #--------------------------
 # poetry
