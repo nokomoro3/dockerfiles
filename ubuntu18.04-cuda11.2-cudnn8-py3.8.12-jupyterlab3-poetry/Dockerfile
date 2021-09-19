@@ -67,12 +67,11 @@ RUN apt autoremove -y
 # poetry
 #--------------------------
 RUN pip install poetry
-RUN poetry config virtualenvs.in-project true
+RUN poetry config virtualenvs.create false
 
 WORKDIR "/app"
 COPY /app/pyproject.toml pyproject.toml
 RUN poetry install
-RUN .venv/bin/python3 -m ipykernel install --user --name=app
 
 WORKDIR "/notebooks"
 CMD ["jupyter", "lab", "--allow-root"]
