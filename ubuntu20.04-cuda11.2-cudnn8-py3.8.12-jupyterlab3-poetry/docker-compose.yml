@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./app:/app
-      - ./notebooks:/notebooks
     ports:
       - 8888:8888
       - 6006:6006
