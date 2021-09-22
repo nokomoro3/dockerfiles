@@ -39,7 +39,7 @@ RUN cd /usr/local/bin && \
 #--------------------------
 # jupyterlab
 #--------------------------
-RUN pip install jupyterlab
+RUN pip install jupyterlab==3.1.12
 RUN pip install jupyterlab_widgets
 RUN pip install ipywidgets
 RUN jupyter nbextension enable --py widgetsnbextension
@@ -61,17 +61,19 @@ COPY jupyter_lab_config.py /root/.jupyter/jupyter_lab_config.py
 
 RUN rm -rf /tmp/*
 RUN apt clean
-RUN apt autoremove -y
+# RUN apt autoremove -y
 
 #--------------------------
 # poetry
 #--------------------------
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
+# RUN poetry config virtualenvs.in-project true
 
 WORKDIR "/app"
 COPY ./app/pyproject.toml pyproject.toml
 RUN poetry install
+RUN python3 -m ipykernel install --user --name=app
 
 WORKDIR "/app/notebooks"
 CMD ["jupyter", "lab", "--allow-root"]
