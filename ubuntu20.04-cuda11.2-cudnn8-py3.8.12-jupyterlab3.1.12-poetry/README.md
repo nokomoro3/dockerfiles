@@ -1,4 +1,4 @@
-# ubuntu18.04-cuda11.2-cudnn8-py3.8.12-jupyterlab3-poetry
+# ubuntu20.04-cuda11.2-cudnn8-py3.8.12-jupyterlab3-poetry
 
 ## Setup
 
