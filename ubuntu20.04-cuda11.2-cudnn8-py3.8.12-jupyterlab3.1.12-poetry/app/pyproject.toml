@@ -6,6 +6,9 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+torch = "^1.9.1"
+torchvision = "^0.10.1"
+torchaudio = "^0.9.1"
 ipykernel = "^6.4.1"
 ipywidgets = "^7.6.5"
 

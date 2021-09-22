@@ -1,5 +1,7 @@
 # ubuntu20.04-cuda11.2-cudnn8-py3.8.12-jupyterlab3-poetry
 
+## 解説
+- https://qiita.com/nokomoro3/items/ca92227fcd191dde5f17
 ## Setup
 
 - In order to set the password, the following line needs to be changed.
